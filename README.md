@@ -1,7 +1,6 @@
 # 3d_recon
-#user change
 
-* functions
+* Functions *
 
   - reconstruct 3d model from the series of 2d images.
     + mesh and Point cloud.
