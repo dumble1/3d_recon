@@ -40,30 +40,38 @@ int main(){
 
     fp = fopen("copy.obj","r");
     float range = max-min;
-    printf("%f\n",range);
+    //printf("%f\n",range);
     float tmpcolor;
     char color[12]={0};
     char plyformat[200];
-    char* tmp2;
-    tmp2 = (char *)malloc(200);
+    //char* tmp2;
+    //tmp2 = (char *)malloc(200);
+    char* tokenArr[2];
     tmpval =0;
-    printf("make ply\n");
+    
+   // printf("make ply\n");
     
     sprintf(plyformat, "ply\nformat ascii 1.0\nelement vertex %d\nproperty float x\nproperty float y\nproperty float z\nproperty uchar diffuse_red\nproperty uchar diffuse_green\nproperty uchar diffuse_blue\nend_header\n",cnt);
      
-    fputs(plyformat,plyout);
+      fputs(plyformat,plyout);
+      for(i=0;i<2;i++){
+        tokenArr[i] = (char*)malloc(15);
+      }
 
       while(fgets(tmp,200,fp)!= '\0'){
         //printf("%s",tmp);
-        strcpy(tmp2,tmp);
-        tmp2 = strtok(tmp2,"\n");
+        //strcpy(tmp2,tmp);
+        //tmp2 = strtok(tmp2,"\n");
+        //tmp2 = tmp2 +2;
         token = strtok(tmp," ");
        // printf("%s\n",token);
 
-        for(i=0;i<3;i++){  
+        for(i=0;i<2;i++){  
           //printf("%d",i);
-          token = strtok(NULL," ");    //get z value
+          tokenArr[i] = strtok(NULL," ");   
         }
+        token = strtok(NULL," ");   //get z.
+
         //printf(" %s\n",token);
         tmpval = atof(token);
         tmpval = tmpval -min;
@@ -79,9 +87,11 @@ int main(){
         }
         else printf("color error!\n");
         i=0;
-        sprintf(tmp,"%s %d %d %d\n",tmp2+2,r,g,b);
-        printf("%s",tmp);
-        fputs(tmp,plyout); 
+        sprintf(tmp,"%s %s 0 %d %d %d\n",tokenArr[0],tokenArr[1],r,g,b);
+       // printf("%s",tmp);
+
+        fputs(tmp, plyout);
+       //printf("print\n"); 
     }
     fclose(fp);
     fclose(plyout);
