@@ -41,4 +41,4 @@
   
   - Afterward
     + Calender
-    + Find images which contain specific point.
+    + Find images which contain specific point. (Inspection)
