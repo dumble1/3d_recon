@@ -5,8 +5,8 @@ import numpy as np
 width = 5029
 height =6040
 img = Image.new('RGB', (width,height),"black")
-f = open("copyflat.ply",'r')
-fp = open("copyflat.ply",'r')
+f = open("copy.ply",'r')
+fp = open("copy.ply",'r')
 #img.show()
 
 pixels = img.load()
