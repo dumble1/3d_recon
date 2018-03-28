@@ -1,5 +1,5 @@
-copy.obj
-copy.ply
-dem_mesh.png
+*.obj
+*.ply
+*.png
 copy_vertex
 
